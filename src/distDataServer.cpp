@@ -41,12 +41,12 @@ class distDataHandler : virtual public distDataIf {
 
   void listFilesDir(directory& _return, const std::string& DirPath, const std::string& workingDir) {
     // Your implementation goes here
-    dir ADir(DirPath,workingDir);
-    ADir.listBoost();
-    directory toReturn;
-    toReturn.__set_files(ADir._files);
-    _return=toReturn;
     printf("listFilesDir\n");
+    dir ADir(DirPath,workingDir);
+   bool result=ADir.listBoost();
+   if( result ==true)
+      _return=ADir._directory;
+      
   }
 
   void mvFile(result& _return, const std::string& FileName, const std::string& workingDir, const std::string& newFile) {
